@@ -1,0 +1,56 @@
+.input-letters {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 75vw;
+}
+
+fieldset {
+  width: 85vw;
+  border: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-ipa {
+  min-width: 25vw;
+}
+input {
+  margin: 1rem;
+  border: 2px solid black;
+  border-radius: 0.3rem;
+  height: 2.5rem;
+  width: 40vw;
+  font-size: 1.6rem;
+  padding: 0.2rem;
+}
+
+input:focus {
+  transform: scale(1.05);
+  transition: 200ms;
+}
+.label-letters {
+  text-align: left;
+  font-size: 1.6rem;
+  width: 200px;
+}
+
+
+@media print {
+  .input-letters {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  fieldset {
+    flex-direction: column;
+  }
+  .label-letters {
+    text-align: center;
+  }
+
+}

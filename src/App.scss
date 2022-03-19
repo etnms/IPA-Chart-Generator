@@ -1,0 +1,205 @@
+@use "./_variables";
+@import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
+
+html {
+  font-size: 14px;
+  box-sizing: border-box;
+  overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+  width: 0.9rem;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Rubik", "Roboto", sans-serif;
+}
+
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
+
+.title {
+  font-size: 2.5rem;
+  margin: 1rem;
+  background-color: variables.$bright-blue;
+  color: white;
+  border-radius: 10px;
+  padding: 0.5rem 1.5rem;
+  cursor: default;
+}
+
+.instructions {
+  border: 2px solid black;
+  border-radius: 10px;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  font-size: 1.2rem;
+}
+
+.icon {
+  width: 25px;
+  height: auto;
+}
+
+.icon:hover {
+  transform: scale(1.2);
+  transition: 200ms;
+}
+
+.instructions ol {
+  margin: 1rem;
+}
+
+.instructions ol li {
+  margin: 0 1.5rem;
+  padding: 0.3rem 1rem;
+  word-wrap: break-word;
+}
+
+.coded {
+  line-height: 2.4rem;
+}
+
+.title-sm {
+  font-size: 1.6rem;
+  margin: 0.5rem;
+}
+
+.align-center {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.wrapper-btns {
+  margin: 1rem;
+  display: flex;
+  flex-direction: row;
+  gap: 4rem;
+}
+
+.btn {
+  border: 1.5px solid black;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: white;
+  margin: 0.1rem;
+  font-size: 1.3rem;
+}
+
+.btn:hover {
+  background-color: variables.$light-gray;
+}
+
+.btn-primary {
+  font-size: 1.6rem;
+  border: 3px solid transparent;
+  background-color: variables.$bright-blue;
+  color: white;
+}
+
+.btn-primary:hover {
+  border: 3px solid black;
+  background-color: darken(variables.$bright-blue, 10%);
+}
+
+.btn-secondary {
+  font-size: 1.6rem;
+  background-color: variables.$dark-blue;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: darken(variables.$dark-blue, 10%);
+}
+
+.btn-example {
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 3px solid transparent;
+  color: white;
+}
+
+.bb {
+  background-color: variables.$bright-blue;
+}
+
+.db {
+  background-color: variables.$dark-blue;
+}
+
+.btn-create {
+  margin: 1rem;
+}
+
+.btn-tertiary {
+  color: white;
+  border: 3px solid transparent;
+  background-color: variables.$queen-blue;
+}
+
+.btn-tertiary:hover {
+  background-color: darken(variables.$queen-blue, 10%);
+}
+
+.btn-instruction {
+  margin: 1rem;
+  background-color: white;
+  border: 2px solid black;
+  font-size: 1.3rem;
+  border-radius: 50%;
+  padding: 0.5rem 1rem;
+}
+
+.btn-instruction:hover {
+  transform: scale(1.05);
+  transition: 200ms;
+}
+
+@media print {
+  .instructions {
+    display: none;
+  }
+  .title {
+    display: none;
+  }
+  .btn-create {
+    display: none;
+  }
+  .wrapper-btns {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+
+  .instructions {
+    width: 80vw;
+  }
+}
+

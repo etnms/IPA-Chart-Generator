@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="178.22507mm"
+   height="178.22507mm"
+   viewBox="0 0 178.22507 178.22507"
+   version="1.1"
+   id="svg11955"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   sodipodi:docname="ipa_chart_generator_logo.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview11957"
+     pagecolor="#ffffff"
+     bordercolor="#999999"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="1.3932941"
+     inkscape:cx="396.90114"
+     inkscape:cy="568.79594"
+     inkscape:window-width="2520"
+     inkscape:window-height="1481"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs11952">
+    <rect
+       x="-239.71968"
+       y="764.37561"
+       width="326.74088"
+       height="49.32199"
+       id="rect15666" />
+    <rect
+       x="213.88164"
+       y="420.58603"
+       width="429.1987"
+       height="190.91447"
+       id="rect13126" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-15.3312,-62.425827)">
+    <circle
+       style="opacity:0.886199;fill:#407ac2;fill-opacity:1;stroke:#000000;stroke-width:2;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:0;stroke-dasharray:none;stroke-dashoffset:135.761"
+       id="path12038"
+       cx="104.44373"
+       cy="151.53836"
+       r="88.112534" />
+    <text
+       xml:space="preserve"
+       transform="matrix(1.9733446,0,0,2.5211309,-373.25314,-980.49336)"
+       id="text13124"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect13126);fill:#ffffff;fill-opacity:1;stroke:none"><tspan
+         x="213.88086"
+         y="457.07915"
+         id="tspan22813">IPA</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.38122688,0,0,0.4395773,144.58183,-150.36435)"
+       id="text15664"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;white-space:pre;shape-inside:url(#rect15666);fill:#ffffff;fill-opacity:1;stroke:none"><tspan
+         x="-239.71875"
+         y="800.86821"
+         id="tspan22815">Chart generator</tspan></text>
+  </g>
+</svg>

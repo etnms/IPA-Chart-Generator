@@ -1,0 +1,162 @@
+img {
+  width: auto;
+  height: 60vh;
+}
+
+.vowel {
+  position: relative;
+}
+
+.vowel-display {
+  font-size: 1.6rem;
+  background-color: white;
+  padding: 0.2rem;
+  margin: 0.5rem;
+  cursor: grab;
+}
+
+.note {
+  font-size: 1.4rem;
+}
+
+.empty {
+  display: none;
+}
+
+.close-front {
+  position: absolute;
+  top: 4%;
+  left: -2%;
+}
+
+.close-mid {
+  position: absolute;
+  top: 4%;
+  left: 42%;
+}
+
+.close-back {
+  position: absolute;
+  top: 4%;
+  left: 80%;
+}
+
+.close-front-near {
+  position: absolute;
+  top: 15%;
+  left: 22%;
+}
+
+.close-back-near {
+  position: absolute;
+  top: 15%;
+  left: 67%;
+}
+
+.close-mid-front {
+  position: absolute;
+  top: 30%;
+  left: 10%;
+}
+
+.close-mid-center {
+  position: absolute;
+  top: 30%;
+  left: 46%;
+}
+
+.close-mid-back {
+  position: absolute;
+  top: 30%;
+  left: 81%;
+}
+
+.close-mid-near {
+  position: absolute;
+  top: 50%;
+  left: 54%;
+}
+
+.open-mid-front {
+  position: absolute;
+  top: 65%;
+  left: 25%;
+}
+
+.open-mid-mid {
+  position: absolute;
+  top: 65%;
+  left: 55%;
+}
+
+.open-mid-back {
+  position: absolute;
+  top: 65%;
+  left: 82%;
+}
+
+.open-front-near {
+  position: absolute;
+  top: 77%;
+  left: 27%;
+}
+
+.open-mid-near {
+  position: absolute;
+  top: 75%;
+  left: 60%;
+}
+
+.open-front {
+  position: absolute;
+  top: 85%;
+  left: 35%;
+}
+
+.open-back {
+  position: absolute;
+  top: 85%;
+  left: 80%;
+}
+
+@media print {
+  .note-vowel {
+    display: none;
+  }
+
+  .vowel {
+    margin: 5rem;
+    page-break-after: always;
+  }
+
+  .vowel-display {
+    font-size: 1.2rem;
+  }
+
+  img {
+    width: 80vw;
+  }
+
+}
+
+@media  screen and (max-width: 600px) {
+  .wrapper-vowel-chart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90vw;
+    margin-bottom: 1rem;
+  }
+  input {
+    width: 70vw;
+  }
+  img {
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 900px){
+  img {
+    max-width: 100%;
+  }
+}

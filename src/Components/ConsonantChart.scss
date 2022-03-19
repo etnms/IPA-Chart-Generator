@@ -1,0 +1,122 @@
+@use "../_variables.scss";
+
+.table-title {
+  font-size: 1.6rem;
+  margin: 0.5rem;
+  font-weight: bold;
+}
+
+.wrapper-other-cons {
+  margin: 2rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.tb tr:last-child > td {
+  border-bottom: none;
+}
+
+.tb tr > td:last-child,
+.tb tr > th:last-child {
+  border-right: none;
+}
+.tb {
+  border-spacing: 0;
+  border: 1.5px solid black;
+  border-radius: 0.3rem;
+  background-color: white;
+  white-space: nowrap;
+}
+
+.tb th {
+  border-right: solid 1.5px black;
+  border-bottom: solid 1.5px black;
+  font-weight: normal;
+  padding: 0.6rem 0.2rem;
+  width: 6vw;
+  font-size: 0.7rem;
+}
+.tb td {
+  border-right: solid 1.5px black;
+  border-bottom: solid 1.5px black;
+}
+
+.cell {
+  text-align: center;
+  height: 8vh;
+  font-size: 1.3rem;
+}
+.cell-header {
+  font-size: 0.7rem;
+}
+
+.cell-filled {
+  background-color: variables.$light-gray;
+}
+
+.cell-large {
+  // min-height: 10vh;
+  width: 20vw;
+  height: 6vh;
+  padding: 0;
+}
+
+@media print {
+  .tb {
+    page-break-after: always;
+  }
+
+  .wrapper-other-cons {
+    align-items: center;
+    page-break-after: always;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .consonant-charts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90vw;
+  }
+  .wrapper-other-cons {
+    display: flex;
+    flex-direction: column;
+    width: 90vw;
+  }
+
+  .tb {
+    overflow-x: auto;
+    width: 100%;
+  }
+
+  .main-tb {
+    overflow-x: auto;
+    width: 100%;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 320px) {
+
+  .table-title {
+    font-size: 1.2rem;
+  }
+
+  .tb th {
+    padding: 0.1rem;
+  }
+  .cell, .cell-large {
+    width: 1rem;
+    height: 2rem;
+    padding: 0.1rem;
+  }
+
+  .tb-non-pulmonic{
+    overflow-x: auto;
+    width: 100%;
+    display: block;
+  }
+}
