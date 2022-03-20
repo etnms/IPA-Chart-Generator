@@ -36,7 +36,7 @@
   font-weight: normal;
   padding: 0.6rem 0.2rem;
   width: 6vw;
-  font-size: 0.7rem;
+  font-size: 1rem;
 }
 .tb td {
   border-right: solid 1.5px black;
@@ -49,7 +49,7 @@
   font-size: 1.3rem;
 }
 .cell-header {
-  font-size: 0.7rem;
+  font-size: 1rem;
 }
 
 .cell-filled {
@@ -67,10 +67,16 @@
   .tb {
     page-break-after: always;
   }
-
+  .tb th {
+    font-size: 0.7rem;
+  }
   .wrapper-other-cons {
     align-items: center;
     page-break-after: always;
+  }
+
+  .cell-header {
+    font-size: 0.7rem;
   }
 }
 

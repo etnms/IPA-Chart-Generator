@@ -5,19 +5,28 @@
     <link rel="icon" href="%PUBLIC_URL%/logo.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
+    <meta name="description" content="Web site created using create-react-app" />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo.svg" />
 
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
-    <title>React App</title>
+    <title>IPA Chart Generator</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
-
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function () {
+          navigator.serviceWorker.register("serviceWorker.js").then(
+            function (registration) {
+            },
+            function (err) {
+              console.log(err);
+            }
+          );
+        });
+      }
+    </script>
   </body>
 </html>

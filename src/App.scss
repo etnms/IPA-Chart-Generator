@@ -61,7 +61,7 @@ html {
 
 .icon {
   width: 25px;
-  height: auto;
+  height: 25px;
 }
 
 .icon:hover {
@@ -80,7 +80,7 @@ html {
 }
 
 .coded {
-  line-height: 2.4rem;
+  line-height: 2.1rem;
 }
 
 .title-sm {
@@ -143,6 +143,7 @@ html {
   padding: 0.5rem 1rem;
   border: 3px solid transparent;
   color: white;
+  white-space: nowrap;
 }
 
 .bb {

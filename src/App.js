@@ -26,32 +26,26 @@ function App() {
   };
   return (
     <div className="App">
-      <h1 className="title">Ipa Chart Generator</h1>
+      <h1 className="title">IPA Chart Generator</h1>
       <section className="instructions">
         <h2 className="title-sm align-center">
           Instructions
           <img
-            src={showInstructions? minus : plus}
+            src={showInstructions ? minus : plus}
             alt="icon show instructions"
             className="icon"
             onClick={() => setShowInstructions(!showInstructions)}></img>
-
         </h2>
         {showInstructions ? (
           <ol>
-            <li>
-              Type the consonants and vowels of your language in their
-              respective boxes.
+            <li>Type the consonants and vowels of your language in their respective boxes.</li>
+            <li className="coded">
+              If you want to access IPA symbols you can click on the {" "}
+              <code className="btn-example db">Show IPA</code> buttons.
             </li>
             <li className="coded">
-              If you want to access IPA symbols you can click on the buttons{" "}
-              <code className="btn-example db">Show IPA</code>.
-            </li>
-            <li className="coded">
-              Once you're done you can press the{" "}
-              <code className="btn-example bb">Create charts</code> button. And,
-              voila! You can access the IPA charts you just created. You can
-              also download them as a pdf or print them.
+              Once you're done you can press the <code className="btn-example bb">Create charts</code> button. And,
+              voila! You can access the IPA charts you just created. You can also download them as a pdf or print them.
             </li>
           </ol>
         ) : null}
@@ -61,9 +55,7 @@ function App() {
         setConsonants={setConsonants}
         vowelList={vowels}
         setVowels={setVowels}></LetterPicker>
-      <button
-        className="btn btn-primary btn-create"
-        onClick={() => setDisplayCharts(!displayCharts)}>
+      <button className="btn btn-primary btn-create" onClick={() => setDisplayCharts(!displayCharts)}>
         {displayCharts ? "Remove charts" : "Create charts"}
       </button>
       {displayCharts ? (
@@ -74,10 +66,7 @@ function App() {
         </div>
       ) : null}
       {displayCharts ? (
-        <VowelChart
-          vowels={vowels}
-          sortingSounds={sortingSounds}
-          soundsDistribution={soundsDistribution}></VowelChart>
+        <VowelChart vowels={vowels} sortingSounds={sortingSounds} soundsDistribution={soundsDistribution}></VowelChart>
       ) : null}
       {displayCharts ? (
         <ConsonantChart
