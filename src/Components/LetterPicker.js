@@ -20,6 +20,8 @@ const LetterPicker = ({
     for (let i = 0; i < consonantList.length; i++) {
       document.querySelector("#consonants-input").value += consonantList[i];
     }
+    // Ignore missing dependency consonantlist and vowellist: adding them would make each letter repeat itself
+     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleChange = (e, setListSound) => {
