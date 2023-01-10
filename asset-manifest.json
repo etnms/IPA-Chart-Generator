@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/IPA-Chart-Generator/static/css/main.9448d4cd.css",
+    "main.js": "/IPA-Chart-Generator/static/js/main.d852b942.js",
+    "static/media/vowel_chart_empty.png": "/IPA-Chart-Generator/static/media/vowel_chart_empty.8f68613561581489f6ec.png",
+    "index.html": "/IPA-Chart-Generator/index.html",
+    "static/media/add_circle_black_24dp.svg": "/IPA-Chart-Generator/static/media/add_circle_black_24dp.8a50c913966989d843434a89bdaac3eb.svg",
+    "static/media/remove_circle_black_24dp.svg": "/IPA-Chart-Generator/static/media/remove_circle_black_24dp.7c256e48587398331e6597a8aff76b98.svg",
+    "main.9448d4cd.css.map": "/IPA-Chart-Generator/static/css/main.9448d4cd.css.map",
+    "main.d852b942.js.map": "/IPA-Chart-Generator/static/js/main.d852b942.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9448d4cd.css",
+    "static/js/main.d852b942.js"
+  ]
+}
