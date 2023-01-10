@@ -1,5 +1,7 @@
 # IPA Chart Generator
 
+Demo: https://etnms.github.io/IPA-Chart-Generator/
+
 ## Description
 IPA Chart Generator is a web app that allows you to create IPA charts for any language. By simply entering
 the sounds of your language the app will generate the corresponding tables and charts. 
