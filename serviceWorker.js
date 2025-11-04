@@ -1,5 +1,9 @@
 let CACHE_NAME = "my-site-cache-v1";
-const urlsToCache = ["/", "/index.html"];
+const BASE_URL = "/IPA-Chart-Generator"; // match vite.config.js base
+const urlsToCache = [
+  `${BASE_URL}/`,
+  `${BASE_URL}/index.html`,
+];
 self.addEventListener("install", function (event) {
   // Perform install steps
   event.waitUntil(
