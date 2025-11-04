@@ -13,7 +13,8 @@ export default defineConfig(() => {
             manifest: {
                 name: 'IPA Chart Generator',
                 short_name: 'IPA Chart',
-                start_url: '/',
+                start_url: '/IPA-Chart-Generator/',
+                scope: '/IPA-Chart-Generator/',
                 display: 'standalone',
                 background_color: '#000000',
                 theme_color: '#000000',
