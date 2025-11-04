@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/IPA-Chart-Generator/sw.js', { scope: '/IPA-Chart-Generator/' })})}
