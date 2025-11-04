@@ -1,5 +1,8 @@
 @use "./_variables";
+@use "sass:color";
 @import url("https://fonts.googleapis.com/css2?family=Rubik&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Andika&display=swap");
 
 html {
   font-size: 14px;
@@ -27,7 +30,7 @@ html {
 * {
   padding: 0;
   margin: 0;
-  font-family: "Rubik", "Roboto", sans-serif;
+  font-family: "Rubik", "Roboto", "Noto Sans", "Andika", sans-serif;
 }
 
 .App {
@@ -125,7 +128,7 @@ html {
 
 .btn-primary:hover {
   border: 3px solid black;
-  background-color: darken(variables.$bright-blue, 10%);
+  background-color: color.adjust(variables.$bright-blue, $lightness: -10%);
 }
 
 .btn-secondary {
@@ -135,7 +138,7 @@ html {
 }
 
 .btn-secondary:hover {
-  background-color: darken(variables.$dark-blue, 10%);
+  background-color: color.adjust(variables.$dark-blue, $lightness: -10%);
 }
 
 .btn-example {
@@ -165,7 +168,7 @@ html {
 }
 
 .btn-tertiary:hover {
-  background-color: darken(variables.$queen-blue, 10%);
+  background-color: color.adjust(variables.$queen-blue, $lightness: -10%);
 }
 
 .btn-instruction {
@@ -198,9 +201,7 @@ html {
 }
 
 @media screen and (max-width: 600px) {
-
   .instructions {
     width: 80vw;
   }
 }
-
