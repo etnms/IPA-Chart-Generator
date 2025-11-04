@@ -20,7 +20,7 @@ export default defineConfig(() => {
                 theme_color: '#000000',
                 icons: [
                     {
-                        src: '/logo.svg',
+                        src: 'logo.svg',
                         sizes: '192x192',
                         type: 'image/svg+xml',
                     },
