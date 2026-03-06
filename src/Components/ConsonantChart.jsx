@@ -1,356 +1,329 @@
 import "./ConsonantChart.scss";
-import consonantList from "../Data/consonants.json";
+import consonantData from "../Data/consonants.json"; 
 
 const ConsonantChart = ({ consonants, sortingSounds, soundsDistribution }) => {
+  // Helper to find symbols by place and manner from JSON
+  const getSound = (mannerKey, place, isVoiced = null) => {
+    const list = consonantData[mannerKey] || [];
+    const filtered = list.filter(item => 
+      item.place.toLowerCase() === place.toLowerCase() && 
+      (isVoiced === null || item.voiced === isVoiced)
+    );
+    
+    const symbols = filtered.map(f => f.symbol);
+    // Return null if no symbols found to avoid empty strings/labels in the UI
+    if (symbols.length === 0) return null;
+    return soundsDistribution(sortingSounds(consonants, consonantData), ...symbols);
+  };
+
+  const getNonPulmonic = (categoryKey, place) => {
+  const list = consonantData[categoryKey] || [];
+  
+  // Filter by place
+  const matches = list.filter(item => 
+    item.place.toLowerCase() === place.toLowerCase()
+  );
+
+  if (matches.length === 0) return null;
+
+  return matches.map((item, idx) => {
+    const sound = soundsDistribution(sortingSounds(consonants, consonantData), item.symbol);
+    
+    // If the user hasn't selected this sound, don't render it
+    if (!sound) return null;
+
+    // Speical case: clicks
+    if (categoryKey === "clicks") {
+      const label = `${item.type || ""} ${item.release || ""}`.trim();
+      return (
+        <div key={idx} className="non-pulmonic-item">
+          {sound} <span className="label-text">{label} {place}</span>
+        </div>
+      );
+    }
+    // else ejective and implosives
+    return (
+      <div key={idx} className="non-pulmonic-item">
+        {sound} <span className="label-text">{place}</span>
+      </div>
+    );
+  });
+};
+
+  const places = [
+    "Bilabial", "Labiodental", "Linguolabial", "Dental", "Alveolar", "Postalveolar", 
+    "Retroflex", "Palatal", "Velar", "Uvular", "Pharyngeal", "Glottal"
+  ];
+
+  const renderPair = (manner, place) => (
+  <div className="ipa-split-cell">
+    <div className="voiceless-side">{getSound(manner, place, false)}</div>
+    <div className="voiced-side">{getSound(manner, place, true)}</div>
+  </div>
+);
+
   return (
     <div className="consonant-charts">
+      {/* --- PULMONIC TABLE --- */}
       <table className="tb main-tb">
         <caption className="table-title">Pulmonic consonants</caption>
         <thead>
           <tr>
             <th className="cell"></th>
-            <th className="cell cell-header">Bilabial</th>
-            <th className="cell cell-header">Labiodental</th>
-            <th className="cell cell-header">Dental</th>
-            <th className="cell cell-header">Alveolar</th>
-            <th className="cell cell-header">Postalveolar</th>
-            <th className="cell cell-header">Retroflex</th>
-            <th className="cell cell-header">Palatal</th>
-            <th className="cell cell-header">Velar</th>
-            <th className="cell cell-header">Uvular</th>
-            <th className="cell cell-header">Pharyngeal</th>
-            <th className="cell cell-header">Glotal</th>
+            {places.map(p => <th key={p} className="cell cell-header">{p}</th>)}
           </tr>
         </thead>
         <tbody>
           <tr>
             <td className="cell cell-header">Plosive</td>
-            <td className="cell">{soundsDistribution(sortingSounds(consonants, consonantList), "p", "b")}</td>
-            <td className="cell"></td>
-            <td className="cell" colSpan="3">
-              {soundsDistribution(sortingSounds(consonants, consonantList), "t", "d")}
-            </td>
-            <td className="cell">{soundsDistribution(sortingSounds(consonants, consonantList), "ʈ", "ɖ")}</td>
-            <td className="cell">{soundsDistribution(sortingSounds(consonants, consonantList), "c", "ɟ")}</td>
-            <td className="cell">{soundsDistribution(sortingSounds(consonants, consonantList), "k", "g")}</td>
-            <td className="cell">{soundsDistribution(sortingSounds(consonants, consonantList), "q", "ɢ")}</td>
-            <td className="cell"></td>
-            <td className="cell">{soundsDistribution(sortingSounds(consonants, consonantList), "\u0294")}</td>
+            <td className="cell">{renderPair("plosives", "Bilabial")}</td>
+            <td className="cell">{renderPair("plosives", "Labiodental")}</td>
+            <td className="cell">{renderPair("plosives", "Linguolabial")}</td>
+            <td className="cell">{renderPair("plosives", "Dental")}</td>
+            <td className="cell">{renderPair("plosives", "Alveolar")}</td>
+            <td className="cell">{renderPair("plosives", "Postalveolar")}</td>
+            <td className="cell">{renderPair("plosives", "Retroflex")}</td>
+            <td className="cell">{renderPair("plosives", "Palatal")}</td>
+            <td className="cell">{renderPair("plosives", "Velar")}</td>
+            <td className="cell">{renderPair("plosives", "Uvular")}</td>
+            <td className="cell">{renderPair("plosives", "Pharyngeal")}</td>
+            <td className="cell">{renderPair("plosives", "Glottal")}</td>
+          </tr>
+          <tr>
+            <td className="cell cell-header">Sibilant Affricate</td>
+            <td className="cell cell-filled"></td>
+            <td className="cell cell-filled"></td>
+            <td className="cell cell-filled"></td>
+            <td className="cell">{renderPair("sibilant_affricates", "Dental")}</td>
+            <td className="cell">{renderPair("sibilant_affricates", "Alveolar")}</td>
+            <td className="cell">{renderPair("sibilant_affricates", "Postalveolar")}</td>
+            <td className="cell">{renderPair("sibilant_affricates", "Retroflex")}</td>
+            <td className="cell">{renderPair("sibilant_affricates", "Palatal")}</td>
+            <td className="cell cell-filled"></td>
+            <td className="cell cell-filled"></td>
+            <td className="cell cell-filled"></td>
+            <td className="cell cell-filled"></td>
+            
+          </tr>
+
+
+          <tr>
+            <td className="cell cell-header">Non-Sibilant Affricate</td>
+            <td className="cell">{renderPair("non_sibilant_affricates", "Bilabial")}</td>
+            <td className="cell">{renderPair("non_sibilant_affricates", "Labiodental")}</td>
+            <td className="cell">{renderPair("non_sibilant_affricates", "Linghobilabial")}</td>
+            <td className="cell">{renderPair("non_sibilant_affricates", "Dental")}</td>
+            <td className="cell">{renderPair("non_sibilant_affricates", "Alveolar")}</td>
+            <td className="cell">{renderPair("non_sibilant_affricates", "Postalveolar")}</td>
+            <td className="cell">{renderPair("non_sibilant_affricates", "Retroflex")}</td>
+            <td className="cell">{renderPair("non_sibilant_affricates", "Palatal")}</td>
+            <td className="cell">{renderPair("non_sibilant_affricates", "Velar")}</td>
+            <td className="cell">{renderPair("non_sibilant_affricates", "Uvular")}</td>
+            <td className="cell">{renderPair("non_sibilant_affricates", "Pharyngeal")}</td>
+            <td className="cell">{renderPair("non_sibilant_affricates", "Glottal")}</td>
           </tr>
           <tr>
             <td className="cell cell-header">Nasal</td>
-            <td className="cell">{soundsDistribution(sortingSounds(consonants, consonantList), "m")}</td>
-            <td className="cell">{soundsDistribution(sortingSounds(consonants, consonantList), "ɱ")}</td>
-            <td className="cell" colSpan="3">
-              {soundsDistribution(sortingSounds(consonants, consonantList), "n")}
-            </td>
-            <td className="cell">{soundsDistribution(sortingSounds(consonants, consonantList), "ɳ")}</td>
-            <td className="cell">{soundsDistribution(sortingSounds(consonants, consonantList), "ɲ")}</td>
-            <td className="cell">{soundsDistribution(sortingSounds(consonants, consonantList), "ŋ")}</td>
-            <td className="cell">{soundsDistribution(sortingSounds(consonants, consonantList), "ɴ")}</td>
+            <td className="cell">{renderPair("nasals", "Bilabial")}</td>
+            <td className="cell">{renderPair("nasals", "Labiodental")}</td>
+            <td className="cell">{renderPair("nasals", "Linguolabial")}</td>
+            <td className="cell">{renderPair("nasals", "Dental")}</td>
+            <td className="cell">{renderPair("nasals", "Alveolar")}</td>
+            <td className="cell">{renderPair("nasals", "Postalveolar")}</td>
+            <td className="cell">{renderPair("nasals", "Retroflex")}</td>
+            <td className="cell">{renderPair("nasals", "Palatal")}</td>
+            <td className="cell">{renderPair("nasals", "Velar")}</td>
+            <td className="cell">{renderPair("nasals", "Uvular")}</td>
             <td className="cell cell-filled"></td>
             <td className="cell cell-filled"></td>
           </tr>
           <tr>
             <td className="cell cell-header">Trill</td>
-            <td className="cell">{soundsDistribution(sortingSounds(consonants, consonantList), "ʙ")}</td>
+            <td className="cell">{renderPair("trills", "Bilabial")}</td>
             <td className="cell"></td>
-            <td className="cell" colSpan="3">
-              {soundsDistribution(sortingSounds(consonants, consonantList), "r")}
-            </td>
+            <td className="cell">{renderPair("trills", "Linguolabial")}</td>
+            <td className="cell">{renderPair("trills", "Dental")}</td>
+            <td className="cell">{renderPair("trills", "Alveolar")}</td>
+            <td className="cell">{renderPair("trills", "Postalveolar")}</td>
             <td className="cell"></td>
             <td className="cell"></td>
             <td className="cell cell-filled"></td>
-            <td className="cell">{soundsDistribution(sortingSounds(consonants, consonantList), "ʀ")}</td>
-            <td className="cell"></td>
+            <td className="cell">{renderPair("trills", "Uvular")}</td>
+            <td className="cell">{renderPair("trills", "Pharyngeal")}</td>
             <td className="cell cell-filled"></td>
           </tr>
           <tr>
             <td className="cell cell-header">Tap/Flap</td>
-            <td className="cell"></td>
-            <td className="cell"></td>
-            <td className="cell" colSpan="3">
-              {soundsDistribution(sortingSounds(consonants, consonantList), "ɾ")}
-            </td>
-            <td className="cell">{soundsDistribution(sortingSounds(consonants, consonantList), "ɽ")}</td>
+            <td className="cell">{renderPair("taps_and_flaps", "Bilabial")}</td>
+            <td className="cell">{renderPair("taps_and_flaps", "Labiodental")}</td>
+            <td className="cell">{renderPair("taps_and_flaps", "Linguolabial")}</td>
+            <td className="cell">{renderPair("taps_and_flaps", "Dental")}</td>
+            <td className="cell">{renderPair("taps_and_flaps", "Alveolar")}</td>
+            <td className="cell">{renderPair("taps_and_flaps", "Postalveolar")}</td>
+            <td className="cell">{renderPair("taps_and_flaps", "Retroflex")}</td>
             <td className="cell"></td>
             <td className="cell cell-filled"></td>
-            <td className="cell"></td>
+            <td className="cell">{renderPair("taps_and_flaps", "Uvular")}</td>
             <td className="cell"></td>
             <td className="cell cell-filled"></td>
           </tr>
           <tr>
             <td className="cell cell-header">Fricative</td>
-            <td className="cell">{soundsDistribution(sortingSounds(consonants, consonantList), "ɸ", "β")}</td>
-            <td className="cell">{soundsDistribution(sortingSounds(consonants, consonantList), "f", "v")}</td>
-            <td className="cell">{soundsDistribution(sortingSounds(consonants, consonantList), "θ", "ð")}</td>
-            <td className="cell">{soundsDistribution(sortingSounds(consonants, consonantList), "s", "z")}</td>
-            <td className="cell">{soundsDistribution(sortingSounds(consonants, consonantList), "ʃ", "ʒ")}</td>
-            <td className="cell">{soundsDistribution(sortingSounds(consonants, consonantList), "ʂ", "ʐ")}</td>
-            <td className="cell">{soundsDistribution(sortingSounds(consonants, consonantList), "ç", "ʝ")}</td>
-            <td className="cell">{soundsDistribution(sortingSounds(consonants, consonantList), "x", "\u0263")}</td>
-            <td className="cell">{soundsDistribution(sortingSounds(consonants, consonantList), "χ", "ʁ")}</td>
-            <td className="cell">{soundsDistribution(sortingSounds(consonants, consonantList), "ħ", "ʕ")}</td>
-            <td className="cell">{soundsDistribution(sortingSounds(consonants, consonantList), "h", "ɦ")}</td>
+            <td className="cell">{renderPair("non_sibilant_fricatives", "Bilabial")}</td>
+            <td className="cell">{renderPair("non_sibilant_fricatives", "Labiodental")}</td>
+            <td className="cell">{renderPair("non_sibilant_fricatives", "Linguolabial")}</td>
+            <td className="cell">{renderPair("non_sibilant_fricatives", "Dental")}</td>
+            <td className="cell">{renderPair("sibilant_fricatives", "Alveolar")}</td>
+            <td className="cell">{renderPair("sibilant_fricatives", "Postalveolar")}</td>
+            <td className="cell">{renderPair("sibilant_fricatives", "Retroflex")}</td>
+            <td className="cell">{renderPair("non_sibilant_fricatives", "Palatal")}</td>
+            <td className="cell">{renderPair("non_sibilant_fricatives", "Velar")}</td>
+            <td className="cell">{renderPair("non_sibilant_fricatives", "Uvular")}</td>
+            <td className="cell">{renderPair("non_sibilant_fricatives", "Pharyngeal")}</td>
+            <td className="cell">{renderPair("non_sibilant_fricatives", "Glottal")}</td>
+          </tr>
+              <tr>
+            <td className="cell cell-header">Lateral Affricate</td>
+            <td className="cell cell-filled"></td>
+            <td className="cell cell-filled"></td>
+            <td className="cell">{renderPair("lateral_affricates", "Linguolabial")}</td>
+            <td className="cell">{renderPair("lateral_affricates", "Dental")}</td>
+            <td className="cell">{renderPair("lateral_affricates", "Alveolar")}</td>
+            <td className="cell">{renderPair("lateral_affricates", "Postalveolar")}</td>
+            <td className="cell">{renderPair("lateral_affricates", "Retroflex")}</td>
+            <td className="cell">{renderPair("lateral_affricates", "Palatal")}</td>
+            <td className="cell">{renderPair("lateral_affricates", "Velar")}</td>
+            <td className="cell">{renderPair("lateral_affricates", "Uvular")}</td>
+            <td className="cell cell-filled"></td>
+            <td className="cell cell-filled"></td>
           </tr>
           <tr>
-            <td className="cell cell-header">Lateral fricative</td>
+            <td className="cell cell-header">Lateral Fricative</td>
             <td className="cell cell-filled"></td>
             <td className="cell cell-filled"></td>
-            <td className="cell" colSpan="3">
-              {soundsDistribution(sortingSounds(consonants, consonantList), "ɬ", "ɮ")}
-            </td>
-            <td className="cell"></td>
-            <td className="cell"></td>
-            <td className="cell"></td>
-            <td className="cell"></td>
+            <td className="cell">{renderPair("lateral_fricatives", "Linguodental")}</td>
+            <td className="cell">{renderPair("lateral_fricatives", "Dental")}</td>
+            <td className="cell">{renderPair("lateral_fricatives", "Alveolar")}</td>
+            <td className="cell">{renderPair("lateral_fricatives", "Postalveolar")}</td>
+            <td className="cell">{renderPair("lateral_fricatives", "Retroflex")}</td>
+            <td className="cell">{renderPair("lateral_fricatives", "Palatal")}</td>
+            <td className="cell">{renderPair("lateral_fricatives", "Velar")}</td>
+             <td className="cell">{renderPair("lateral_fricatives", "Uvular")}</td>
             <td className="cell cell-filled"></td>
             <td className="cell cell-filled"></td>
           </tr>
           <tr>
             <td className="cell cell-header">Approximant</td>
-            <td className="cell"></td>
-            <td className="cell">{soundsDistribution(sortingSounds(consonants, consonantList), "\u028b")}</td>
-            <td className="cell" colSpan="3">
-              {soundsDistribution(sortingSounds(consonants, consonantList), "ɹ")}
-            </td>
-            <td className="cell">{soundsDistribution(sortingSounds(consonants, consonantList), "ɻ")}</td>
-            <td className="cell">{soundsDistribution(sortingSounds(consonants, consonantList), "j")}</td>
-            <td className="cell">{soundsDistribution(sortingSounds(consonants, consonantList), "ɰ")}</td>
-            <td className="cell"></td>
-            <td className="cell"></td>
-            <td className="cell cell-filled"></td>
+            <td className="cell">{renderPair("approximants", "LabBilabialiodental")}</td>
+            <td className="cell">{renderPair("approximants", "Labiodental")}</td>
+            <td className="cell">{renderPair("approximants", "Linguolabial")}</td>
+            <td className="cell">{renderPair("approximants", "LabiDentalodental")}</td>
+            <td className="cell">{renderPair("approximants", "Alveolar")}</td>
+            <td className="cell">{renderPair("approximants", "Postalveolar")}</td>
+            <td className="cell">{renderPair("approximants", "Retroflex")}</td>
+            <td className="cell">{renderPair("approximants", "Palatal")}</td>
+            <td className="cell">{renderPair("approximants", "Velar")}</td>
+            <td className="cell">{renderPair("approximants", "Uvular")}</td>
+            <td className="cell">{renderPair("approximants", "Pharyngeal")}</td>
+            <td className="cell">{renderPair("approximants", "Glottal")}</td>
           </tr>
           <tr>
-            <td className="cell cell-header">Lateral approximant</td>
+            <td className="cell cell-header">Lateral Approx.</td>
             <td className="cell cell-filled"></td>
             <td className="cell cell-filled"></td>
-            <td className="cell" colSpan="3">
-              {soundsDistribution(sortingSounds(consonants, consonantList), "l")}
-            </td>
-            <td className="cell">{soundsDistribution(sortingSounds(consonants, consonantList), "ɭ")}</td>
-            <td className="cell">{soundsDistribution(sortingSounds(consonants, consonantList), "ʎ")}</td>
-            <td className="cell">{soundsDistribution(sortingSounds(consonants, consonantList), "ʟ")}</td>
-            <td className="cell"></td>
+            <td className="cell">{renderPair("lateral_approximants", "Linguolabial")}</td>
+            <td className="cell">{renderPair("lateral_approximants", "Dental")}</td>
+            <td className="cell">{renderPair("lateral_approximants", "Alveolar")}</td>
+            <td className="cell">{renderPair("lateral_approximants", "Postalveolar")}</td>
+            <td className="cell">{renderPair("lateral_approximants", "Retroflex")}</td>
+            <td className="cell">{renderPair("lateral_approximants", "Palatal")}</td>
+            <td className="cell">{renderPair("lateral_approximants", "Velar")}</td>
+            <td className="cell">{renderPair("lateral_approximants", "Uvular")}</td>
+            <td className="cell cell-filled"></td>
+            <td className="cell cell-filled"></td>
+          </tr>
+           <tr>
+            <td className="cell cell-header">Lateral tap/flap</td>
+            <td className="cell cell-filled"></td>
+            <td className="cell cell-filled"></td>
+            <td className="cell">{renderPair("lateral_tap", "Linguolabial")}</td>
+            <td className="cell">{renderPair("lateral_tap", "Dental")}</td>
+            <td className="cell">{renderPair("lateral_tap", "Alveolar")}</td>
+            <td className="cell">{renderPair("lateral_tap", "Postalveolar")}</td>
+            <td className="cell">{renderPair("lateral_tap", "Retroflex")}</td>
+            <td className="cell">{renderPair("lateral_tap", "Palatal")}</td>
+            <td className="cell">{renderPair("lateral_tap", "Velar")}</td>
+            <td className="cell">{renderPair("lateral_tap", "Uvular")}</td>
             <td className="cell cell-filled"></td>
             <td className="cell cell-filled"></td>
           </tr>
         </tbody>
       </table>
-      <div className="wrapper-other-cons">
+
+      {/*NON-PULMONIC */}
+<div className="wrapper-other-cons">
         <table className="tb tb-non-pulmonic">
-          <caption className="table-title">Non-Pulmonic consonants</caption>
+          <caption className="table-title">Non-Pulmonic</caption>
           <thead>
             <tr>
               <th className="cell cell-header">Clicks</th>
-              <th className="cell cell-header">Voices implosives</th>
+              <th className="cell cell-header">Implosives</th>
               <th className="cell cell-header">Ejectives</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td className="cell-large">
-                {soundsDistribution(sortingSounds(consonants, consonantList), "ʘ")
-                  ? soundsDistribution(sortingSounds(consonants, consonantList), "ʘ") + "Bilabial"
-                  : null}
-              </td>
-              <td className="cell-large">
-                {soundsDistribution(sortingSounds(consonants, consonantList), "ɓ")
-                  ? soundsDistribution(sortingSounds(consonants, consonantList), "ɓ") + "Bilabial"
-                  : null}
-              </td>
-              <td className="cell-large"></td>
-            </tr>
-            <tr>
-              <td className="cell-large">
-                {soundsDistribution(sortingSounds(consonants, consonantList), "\u01c0")
-                  ? soundsDistribution(sortingSounds(consonants, consonantList), "\u01c0") + "Dental"
-                  : null}
-              </td>
-              <td className="cell-large">
-                {soundsDistribution(sortingSounds(consonants, consonantList), "ɗ")
-                  ? soundsDistribution(sortingSounds(consonants, consonantList), "ɗ") + "Dental/alveolar"
-                  : null}
-              </td>
-              <td className="cell-large"></td>
-            </tr>
-            <tr>
-              <td className="cell-large">
-                {soundsDistribution(sortingSounds(consonants, consonantList), "\u01c3")
-                  ? soundsDistribution(sortingSounds(consonants, consonantList), "\u01c3") + "(Post)alveolar"
-                  : null}
-              </td>
-              <td className="cell-large">
-                {soundsDistribution(sortingSounds(consonants, consonantList), "ʄ")
-                  ? soundsDistribution(sortingSounds(consonants, consonantList), "ʄ") + "Palatal"
-                  : null}
-              </td>
-              <td className="cell-large"></td>
-            </tr>
-            <tr>
-              <td className="cell-large">
-                {soundsDistribution(sortingSounds(consonants, consonantList), "ǂ")
-                  ? soundsDistribution(sortingSounds(consonants, consonantList), "ǂ") + "Palatoalveolar"
-                  : null}
-              </td>
-              <td className="cell-large">
-                {soundsDistribution(sortingSounds(consonants, consonantList), "ɠ")
-                  ? soundsDistribution(sortingSounds(consonants, consonantList), "ɠ") + "Velar"
-                  : null}
-              </td>
-              <td className="cell-large"></td>
-            </tr>
-            <tr>
-              <td className="cell-large">
-                {soundsDistribution(sortingSounds(consonants, consonantList), "ǁ")
-                  ? soundsDistribution(sortingSounds(consonants, consonantList), "ǁ") + " Alveolar lateral"
-                  : null}
-              </td>
-              <td className="cell-large">
-                {soundsDistribution(sortingSounds(consonants, consonantList), "ʛ")
-                  ? soundsDistribution(sortingSounds(consonants, consonantList), "ʛ") + "Uvular"
-                  : null}
-              </td>
-              <td className="cell-large"></td>
-            </tr>
-          </tbody>
+         <tbody>
+  {[
+    "Bilabial", 
+    "Dental", 
+    "Alveolar", 
+    "Postalveolar", 
+    "Retroflex", 
+    "Palatal", 
+    "Velar", 
+    "Uvular"
+  ].map(place => {
+    const clickCell = getNonPulmonic("clicks", place);
+    const implosiveCell = getNonPulmonic("implosives", place);
+    const ejectiveCell = getNonPulmonic("ejectives", place);
+
+    // Filter out nulls from the arrays to see if there's actually content
+    const hasClick = clickCell?.some(x => x !== null);
+    const hasImplosive = implosiveCell?.some(x => x !== null);
+    const hasEjective = ejectiveCell?.some(x => x !== null);
+
+    if (!hasClick && !hasImplosive && !hasEjective) return null;
+
+    return (
+      <tr key={place}>
+        <td className="cell-large">{clickCell}</td>
+        <td className="cell-large">{implosiveCell}</td>
+        <td className="cell-large">{ejectiveCell}</td>
+      </tr>
+    );
+  })}
+</tbody>
         </table>
-      </div>
+  
+    </div>
       <div className="wrapper-other-cons">
         <table className="tb">
-          <caption className="table-title">Affricates</caption>
+          <caption className="table-title">Co-articulated & Other Symbols</caption>
           <tbody>
-            <tr>
-              <td className="cell-large">
-                {soundsDistribution(sortingSounds(consonants, consonantList), "ʦ")
-                  ? soundsDistribution(sortingSounds(consonants, consonantList), "ʦ") + "Voiceless alveolar affricate"
-                  : null}
-              </td>
-            </tr>
-            <tr>
-              <td className="cell-large">
-                {soundsDistribution(sortingSounds(consonants, consonantList), "ʧ")
-                  ? soundsDistribution(sortingSounds(consonants, consonantList), "ʧ") +
-                    "Voiceless palato-aleolar affricate"
-                  : null}
-              </td>
-            </tr>
-            <tr>
-              <td className="cell-large">
-                {soundsDistribution(sortingSounds(consonants, consonantList), "ʨ")
-                  ? soundsDistribution(sortingSounds(consonants, consonantList), "ʨ") +
-                    "Voiceless alveolo-palatal affricate"
-                  : null}
-              </td>
-            </tr>
-            <tr>
-              <td className="cell-large">
-                {soundsDistribution(sortingSounds(consonants, consonantList), "ʣ")
-                  ? soundsDistribution(sortingSounds(consonants, consonantList), "ʣ") + "Voiced alveolar affricate"
-                  : null}
-              </td>
-            </tr>
-            <tr>
-              <td className="cell-large">
-                {soundsDistribution(sortingSounds(consonants, consonantList), "ʤ")
-                  ? soundsDistribution(sortingSounds(consonants, consonantList), "ʤ") +
-                    "Voiced palato-aleolar affricate"
-                  : null}
-              </td>
-            </tr>
-            <tr>
-              <td className="cell-large">
-                {soundsDistribution(sortingSounds(consonants, consonantList), "ʥ")
-                  ? soundsDistribution(sortingSounds(consonants, consonantList), "ʥ") +
-                    "Voiced alveolo-palatal affricate"
-                  : null}
-              </td>
-            </tr>
+            {consonantData.co_articulated.map((item, index) => {
+              // Only render if the user has selected this sound
+              const sound = soundsDistribution(sortingSounds(consonants, consonantData), item.symbol);
+            if (!sound) return null;
+                    return (
+                    <tr key={index}>
+                      <td className="cell-large">
+                        {sound} {item.place} {item.manner}
+                      </td>
+                    </tr>);
+                  })}
           </tbody>
         </table>
-        <table className="tb">
-          <caption className="table-title">Other symbols</caption>
-          <tbody>
-            <tr>
-              <td className="cell-large">
-                {soundsDistribution(sortingSounds(consonants, consonantList), "ʍ")
-                  ? soundsDistribution(sortingSounds(consonants, consonantList), "ʍ") +
-                    "Voiceless labial-velar fricative"
-                  : null}
-              </td>
-            </tr>
-            <tr>
-              <td className="cell-large">
-                {soundsDistribution(sortingSounds(consonants, consonantList), "w")
-                  ? soundsDistribution(sortingSounds(consonants, consonantList), "w") +
-                    "Voiced labial-velar approximant"
-                  : null}
-              </td>
-            </tr>
-            <tr>
-              <td className="cell-large">
-                {soundsDistribution(sortingSounds(consonants, consonantList), "ɥ")
-                  ? soundsDistribution(sortingSounds(consonants, consonantList), "ɥ") +
-                    "Voiced labial-palatal approximant"
-                  : null}
-              </td>
-            </tr>
-            <tr>
-              <td className="cell-large">
-                {soundsDistribution(sortingSounds(consonants, consonantList), "ʜ")
-                  ? soundsDistribution(sortingSounds(consonants, consonantList), "ʜ") + "Voiceless epiglottal fricative"
-                  : null}
-              </td>
-            </tr>
-            <tr>
-              <td className="cell-large">
-                {soundsDistribution(sortingSounds(consonants, consonantList), "ʢ")
-                  ? soundsDistribution(sortingSounds(consonants, consonantList), "ʢ") + "Voiced epiglottal fricative"
-                  : null}
-              </td>
-            </tr>
-            <tr>
-              <td className="cell-large">
-                {soundsDistribution(sortingSounds(consonants, consonantList), "ʡ")
-                  ? soundsDistribution(sortingSounds(consonants, consonantList), "ʡ") + "Epiglottal plosive"
-                  : null}
-              </td>
-            </tr>
-            <tr>
-              <td className="cell-large">
-                {soundsDistribution(sortingSounds(consonants, consonantList), "ɕ")
-                  ? soundsDistribution(sortingSounds(consonants, consonantList), "ɕ") +
-                    "Voiceless alveolo-palatal fricative"
-                  : null}
-              </td>
-            </tr>
-            <tr>
-              <td className="cell-large">
-                {soundsDistribution(sortingSounds(consonants, consonantList), "ʑ")
-                  ? soundsDistribution(sortingSounds(consonants, consonantList), "ʑ") +
-                    "Voiced alveolo-palatal fricative"
-                  : null}
-              </td>
-            </tr>
-            <tr>
-              <td className="cell-large">
-                {soundsDistribution(sortingSounds(consonants, consonantList), "ɺ")
-                  ? soundsDistribution(sortingSounds(consonants, consonantList), "ɺ") + "Alveolar latral flap"
-                  : null}
-              </td>
-            </tr>
-            <tr>
-              <td className="cell-large">
-                {soundsDistribution(sortingSounds(consonants, consonantList), "ɧ")
-                  ? soundsDistribution(sortingSounds(consonants, consonantList), "ɧ") +
-                    "Voiceless fricative/approximant"
-                  : null}
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        </div>
       </div>
-    </div>
   );
 };
 

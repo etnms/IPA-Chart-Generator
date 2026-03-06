@@ -6,6 +6,13 @@
   width: 75vw;
 }
 
+.ipa-category-title {
+  font-size: 1.3rem;
+}
+.ipa-category-title::first-letter {
+  text-transform: uppercase;
+}
+
 fieldset {
   width: 85vw;
   border: none;
@@ -38,7 +45,6 @@ input:focus {
   width: 200px;
 }
 
-
 @media print {
   .input-letters {
     display: none;
@@ -52,5 +58,4 @@ input:focus {
   .label-letters {
     text-align: center;
   }
-
 }
