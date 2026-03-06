@@ -16,6 +16,7 @@ const ConsonantChart = ({ consonants, sortingSounds, soundsDistribution }) => {
     return soundsDistribution(sortingSounds(consonants, consonantData), ...symbols);
   };
 
+  // Function to deal with non pulmonic sounds as they are organized differently
   const getNonPulmonic = (categoryKey, place) => {
   const list = consonantData[categoryKey] || [];
   
@@ -32,6 +33,17 @@ const ConsonantChart = ({ consonants, sortingSounds, soundsDistribution }) => {
     // If the user hasn't selected this sound, don't render it
     if (!sound) return null;
 
+    // ejectives follow a different pattern
+    if (categoryKey === "ejectives")
+    {
+      const label = `${item.type || ""} ${item.manner || ""}`.trim();
+      return (
+        <div key={idx} className="non-pulmonic-item">
+          {sound} <span className="label-text">{label} {place}</span>
+        </div>
+      );
+    
+    }
     // Speical case: clicks
     if (categoryKey === "clicks") {
       const label = `${item.type || ""} ${item.release || ""}`.trim();
@@ -74,6 +86,21 @@ const ConsonantChart = ({ consonants, sortingSounds, soundsDistribution }) => {
           </tr>
         </thead>
         <tbody>
+             <tr>
+            <td className="cell cell-header">Nasal</td>
+            <td className="cell">{renderPair("nasals", "Bilabial")}</td>
+            <td className="cell">{renderPair("nasals", "Labiodental")}</td>
+            <td className="cell">{renderPair("nasals", "Linguolabial")}</td>
+            <td className="cell">{renderPair("nasals", "Dental")}</td>
+            <td className="cell">{renderPair("nasals", "Alveolar")}</td>
+            <td className="cell">{renderPair("nasals", "Postalveolar")}</td>
+            <td className="cell">{renderPair("nasals", "Retroflex")}</td>
+            <td className="cell">{renderPair("nasals", "Palatal")}</td>
+            <td className="cell">{renderPair("nasals", "Velar")}</td>
+            <td className="cell">{renderPair("nasals", "Uvular")}</td>
+            <td className="cell cell-filled"></td>
+            <td className="cell cell-filled"></td>
+          </tr>
           <tr>
             <td className="cell cell-header">Plosive</td>
             <td className="cell">{renderPair("plosives", "Bilabial")}</td>
@@ -102,11 +129,8 @@ const ConsonantChart = ({ consonants, sortingSounds, soundsDistribution }) => {
             <td className="cell cell-filled"></td>
             <td className="cell cell-filled"></td>
             <td className="cell cell-filled"></td>
-            <td className="cell cell-filled"></td>
-            
+            <td className="cell cell-filled"></td>      
           </tr>
-
-
           <tr>
             <td className="cell cell-header">Non-Sibilant Affricate</td>
             <td className="cell">{renderPair("non_sibilant_affricates", "Bilabial")}</td>
@@ -122,19 +146,64 @@ const ConsonantChart = ({ consonants, sortingSounds, soundsDistribution }) => {
             <td className="cell">{renderPair("non_sibilant_affricates", "Pharyngeal")}</td>
             <td className="cell">{renderPair("non_sibilant_affricates", "Glottal")}</td>
           </tr>
+        <tr>
+            <td className="cell cell-header">Sibilante fricative</td>
+            <td className="cell">{renderPair("sibilant_fricatives", "Bilabial")}</td>
+            <td className="cell">{renderPair("sibilant_fricatives", "Labiodental")}</td>
+            <td className="cell">{renderPair("sibilant_fricatives", "Linguolabial")}</td>
+            <td className="cell">{renderPair("sibilant_fricatives", "Dental")}</td>
+            <td className="cell">{renderPair("sibilant_fricatives", "Alveolar")}</td>
+            <td className="cell">{renderPair("sibilant_fricatives", "Postalveolar")}</td>
+            <td className="cell">{renderPair("sibilant_fricatives", "Retroflex")}</td>
+            <td className="cell">{renderPair("sibilant_fricatives", "Palatal")}</td>
+            <td className="cell">{renderPair("sibilant_fricatives", "Velar")}</td>
+            <td className="cell">{renderPair("sibilant_fricatives", "Uvular")}</td>
+            <td className="cell">{renderPair("sibilant_fricatives", "Pharyngeal")}</td>
+            <td className="cell">{renderPair("sibilant_fricatives", "Glottal")}</td>
+          </tr>
+           <tr>
+            <td className="cell cell-header">Non-sibilante fricative</td>
+            <td className="cell">{renderPair("non_sibilant_fricatives", "Bilabial")}</td>
+            <td className="cell">{renderPair("non_sibilant_fricatives", "Labiodental")}</td>
+            <td className="cell">{renderPair("non_sibilant_fricatives", "Linguolabial")}</td>
+            <td className="cell">{renderPair("non_sibilant_fricatives", "Dental")}</td>
+            <td className="cell">{renderPair("non_sibilant_fricatives", "Alveolar")}</td>
+            <td className="cell">{renderPair("non_sibilant_fricatives", "Postalveolar")}</td>
+            <td className="cell">{renderPair("non_sibilant_fricatives", "Retroflex")}</td>
+            <td className="cell">{renderPair("non_sibilant_fricatives", "Palatal")}</td>
+            <td className="cell">{renderPair("non_sibilant_fricatives", "Velar")}</td>
+            <td className="cell">{renderPair("non_sibilant_fricatives", "Uvular")}</td>
+            <td className="cell">{renderPair("non_sibilant_fricatives", "Pharyngeal")}</td>
+            <td className="cell">{renderPair("non_sibilant_fricatives", "Glottal")}</td>
+          </tr>
           <tr>
-            <td className="cell cell-header">Nasal</td>
-            <td className="cell">{renderPair("nasals", "Bilabial")}</td>
-            <td className="cell">{renderPair("nasals", "Labiodental")}</td>
-            <td className="cell">{renderPair("nasals", "Linguolabial")}</td>
-            <td className="cell">{renderPair("nasals", "Dental")}</td>
-            <td className="cell">{renderPair("nasals", "Alveolar")}</td>
-            <td className="cell">{renderPair("nasals", "Postalveolar")}</td>
-            <td className="cell">{renderPair("nasals", "Retroflex")}</td>
-            <td className="cell">{renderPair("nasals", "Palatal")}</td>
-            <td className="cell">{renderPair("nasals", "Velar")}</td>
-            <td className="cell">{renderPair("nasals", "Uvular")}</td>
+            <td className="cell cell-header">Approximant</td>
+            <td className="cell">{renderPair("approximants", "Bilabial")}</td>
+            <td className="cell">{renderPair("approximants", "Labiodental")}</td>
+            <td className="cell">{renderPair("approximants", "Linguolabial")}</td>
+            <td className="cell">{renderPair("approximants", "Dental")}</td>
+            <td className="cell">{renderPair("approximants", "Alveolar")}</td>
+            <td className="cell">{renderPair("approximants", "Postalveolar")}</td>
+            <td className="cell">{renderPair("approximants", "Retroflex")}</td>
+            <td className="cell">{renderPair("approximants", "Palatal")}</td>
+            <td className="cell">{renderPair("approximants", "Velar")}</td>
+            <td className="cell">{renderPair("approximants", "Uvular")}</td>
+            <td className="cell">{renderPair("approximants", "Pharyngeal")}</td>
+            <td className="cell">{renderPair("approximants", "Glottal")}</td>
+          </tr>
+           <tr>
+            <td className="cell cell-header">Tap/Flap</td>
+            <td className="cell">{renderPair("taps_and_flaps", "Bilabial")}</td>
+            <td className="cell">{renderPair("taps_and_flaps", "Labiodental")}</td>
+            <td className="cell">{renderPair("taps_and_flaps", "Linguolabial")}</td>
+            <td className="cell">{renderPair("taps_and_flaps", "Dental")}</td>
+            <td className="cell">{renderPair("taps_and_flaps", "Alveolar")}</td>
+            <td className="cell">{renderPair("taps_and_flaps", "Postalveolar")}</td>
+            <td className="cell">{renderPair("taps_and_flaps", "Retroflex")}</td>
+            <td className="cell">{renderPair("taps_and_flaps", "Palatal")}</td>
             <td className="cell cell-filled"></td>
+            <td className="cell">{renderPair("taps_and_flaps", "Uvular")}</td>
+            <td className="cell">{renderPair("taps_and_flaps", "Pharyngeal")}</td>
             <td className="cell cell-filled"></td>
           </tr>
           <tr>
@@ -145,44 +214,15 @@ const ConsonantChart = ({ consonants, sortingSounds, soundsDistribution }) => {
             <td className="cell">{renderPair("trills", "Dental")}</td>
             <td className="cell">{renderPair("trills", "Alveolar")}</td>
             <td className="cell">{renderPair("trills", "Postalveolar")}</td>
-            <td className="cell"></td>
-            <td className="cell"></td>
+            <td className="cell">{renderPair("trills", "Retroflex")}</td>
+            <td className="cell">{renderPair("trills", "Palatal")}</td>
             <td className="cell cell-filled"></td>
             <td className="cell">{renderPair("trills", "Uvular")}</td>
             <td className="cell">{renderPair("trills", "Pharyngeal")}</td>
             <td className="cell cell-filled"></td>
           </tr>
+         
           <tr>
-            <td className="cell cell-header">Tap/Flap</td>
-            <td className="cell">{renderPair("taps_and_flaps", "Bilabial")}</td>
-            <td className="cell">{renderPair("taps_and_flaps", "Labiodental")}</td>
-            <td className="cell">{renderPair("taps_and_flaps", "Linguolabial")}</td>
-            <td className="cell">{renderPair("taps_and_flaps", "Dental")}</td>
-            <td className="cell">{renderPair("taps_and_flaps", "Alveolar")}</td>
-            <td className="cell">{renderPair("taps_and_flaps", "Postalveolar")}</td>
-            <td className="cell">{renderPair("taps_and_flaps", "Retroflex")}</td>
-            <td className="cell"></td>
-            <td className="cell cell-filled"></td>
-            <td className="cell">{renderPair("taps_and_flaps", "Uvular")}</td>
-            <td className="cell"></td>
-            <td className="cell cell-filled"></td>
-          </tr>
-          <tr>
-            <td className="cell cell-header">Fricative</td>
-            <td className="cell">{renderPair("non_sibilant_fricatives", "Bilabial")}</td>
-            <td className="cell">{renderPair("non_sibilant_fricatives", "Labiodental")}</td>
-            <td className="cell">{renderPair("non_sibilant_fricatives", "Linguolabial")}</td>
-            <td className="cell">{renderPair("non_sibilant_fricatives", "Dental")}</td>
-            <td className="cell">{renderPair("sibilant_fricatives", "Alveolar")}</td>
-            <td className="cell">{renderPair("sibilant_fricatives", "Postalveolar")}</td>
-            <td className="cell">{renderPair("sibilant_fricatives", "Retroflex")}</td>
-            <td className="cell">{renderPair("non_sibilant_fricatives", "Palatal")}</td>
-            <td className="cell">{renderPair("non_sibilant_fricatives", "Velar")}</td>
-            <td className="cell">{renderPair("non_sibilant_fricatives", "Uvular")}</td>
-            <td className="cell">{renderPair("non_sibilant_fricatives", "Pharyngeal")}</td>
-            <td className="cell">{renderPair("non_sibilant_fricatives", "Glottal")}</td>
-          </tr>
-              <tr>
             <td className="cell cell-header">Lateral Affricate</td>
             <td className="cell cell-filled"></td>
             <td className="cell cell-filled"></td>
@@ -212,21 +252,7 @@ const ConsonantChart = ({ consonants, sortingSounds, soundsDistribution }) => {
             <td className="cell cell-filled"></td>
             <td className="cell cell-filled"></td>
           </tr>
-          <tr>
-            <td className="cell cell-header">Approximant</td>
-            <td className="cell">{renderPair("approximants", "LabBilabialiodental")}</td>
-            <td className="cell">{renderPair("approximants", "Labiodental")}</td>
-            <td className="cell">{renderPair("approximants", "Linguolabial")}</td>
-            <td className="cell">{renderPair("approximants", "LabiDentalodental")}</td>
-            <td className="cell">{renderPair("approximants", "Alveolar")}</td>
-            <td className="cell">{renderPair("approximants", "Postalveolar")}</td>
-            <td className="cell">{renderPair("approximants", "Retroflex")}</td>
-            <td className="cell">{renderPair("approximants", "Palatal")}</td>
-            <td className="cell">{renderPair("approximants", "Velar")}</td>
-            <td className="cell">{renderPair("approximants", "Uvular")}</td>
-            <td className="cell">{renderPair("approximants", "Pharyngeal")}</td>
-            <td className="cell">{renderPair("approximants", "Glottal")}</td>
-          </tr>
+          
           <tr>
             <td className="cell cell-header">Lateral Approx.</td>
             <td className="cell cell-filled"></td>
@@ -246,14 +272,14 @@ const ConsonantChart = ({ consonants, sortingSounds, soundsDistribution }) => {
             <td className="cell cell-header">Lateral tap/flap</td>
             <td className="cell cell-filled"></td>
             <td className="cell cell-filled"></td>
-            <td className="cell">{renderPair("lateral_tap", "Linguolabial")}</td>
-            <td className="cell">{renderPair("lateral_tap", "Dental")}</td>
-            <td className="cell">{renderPair("lateral_tap", "Alveolar")}</td>
-            <td className="cell">{renderPair("lateral_tap", "Postalveolar")}</td>
-            <td className="cell">{renderPair("lateral_tap", "Retroflex")}</td>
-            <td className="cell">{renderPair("lateral_tap", "Palatal")}</td>
-            <td className="cell">{renderPair("lateral_tap", "Velar")}</td>
-            <td className="cell">{renderPair("lateral_tap", "Uvular")}</td>
+            <td className="cell">{renderPair("lateral_taps", "Linguolabial")}</td>
+            <td className="cell">{renderPair("lateral_taps", "Dental")}</td>
+            <td className="cell">{renderPair("lateral_taps", "Alveolar")}</td>
+            <td className="cell">{renderPair("lateral_taps", "Postalveolar")}</td>
+            <td className="cell">{renderPair("lateral_taps", "Retroflex")}</td>
+            <td className="cell">{renderPair("lateral_taps", "Palatal")}</td>
+            <td className="cell">{renderPair("lateral_taps", "Velar")}</td>
+            <td className="cell">{renderPair("lateral_taps", "Uvular")}</td>
             <td className="cell cell-filled"></td>
             <td className="cell cell-filled"></td>
           </tr>
@@ -274,13 +300,16 @@ const ConsonantChart = ({ consonants, sortingSounds, soundsDistribution }) => {
          <tbody>
   {[
     "Bilabial", 
+    "Labiodental",
     "Dental", 
     "Alveolar", 
+    "Dental/Alveolar",
     "Postalveolar", 
     "Retroflex", 
     "Palatal", 
     "Velar", 
-    "Uvular"
+    "Uvular",
+    "Lateral"
   ].map(place => {
     const clickCell = getNonPulmonic("clicks", place);
     const implosiveCell = getNonPulmonic("implosives", place);

@@ -189,11 +189,189 @@
         },
         {
             "symbol": "ʡ",
-            "place": "epiglottal",
+            "place": "pharyngeal",
             "voiced": false
         },
         {
             "symbol": "ʔ",
+            "place": "glottal",
+            "voiced": false
+        }
+    ],
+    "sibilant_affricates": [
+        {
+            "symbol": "t͡s̪",
+            "manner": "sibilant affricate",
+            "place": "dental",
+            "voiced": false
+        },
+        {
+            "symbol": "d͡z̪",
+            "manner": "sibilant affricate",
+            "place": "dental",
+            "voiced": true
+        },
+        {
+            "symbol": "t͡s",
+            "manner": "sibilant affricate",
+            "place": "alveolar",
+            "voiced": false
+        },
+        {
+            "symbol": "d͡z",
+            "manner": "sibilant affricate",
+            "place": "alveolar",
+            "voiced": true
+        },
+        {
+            "symbol": "t̠͡ʃ",
+            "manner": "sibilant affricate",
+            "place": "postalveolar",
+            "voiced": false
+        },
+        {
+            "symbol": "d̠͡ʒ",
+            "manner": "sibilant affricate",
+            "place": "postalveolar",
+            "voiced": true
+        },
+        {
+            "symbol": "t͡ʂ",
+            "manner": "sibilant affricate",
+            "place": "retroflex",
+            "voiced": false
+        },
+        {
+            "symbol": "d͡ʐ",
+            "manner": "sibilant affricate",
+            "place": "retroflex",
+            "voiced": true
+        },
+        {
+            "symbol": "t͡ɕ",
+            "manner": "sibilant affricate",
+            "place": "palatal",
+            "voiced": false
+        },
+        {
+            "symbol": "d͡ʑ",
+            "manner": "sibilant affricate",
+            "place": "palatal",
+            "voiced": true
+        }
+    ],
+    "non_sibilant_affricates": [
+        {
+            "symbol": "p͡ɸ",
+            "manner": "non-sibilant affricate",
+            "place": "bilabial",
+            "voiced": false
+        },
+        {
+            "symbol": "b͡β",
+            "manner": "non-sibilant affricate",
+            "place": "bilabial",
+            "voiced": true
+        },
+        {
+            "symbol": "p̪͡f",
+            "manner": "non-sibilant affricate",
+            "place": "labiodental",
+            "voiced": false
+        },
+        {
+            "symbol": "b̪͡v",
+            "manner": "non-sibilant affricate",
+            "place": "labiodental",
+            "voiced": true
+        },
+        {
+            "symbol": "t̪͡θ",
+            "manner": "non-sibilant affricate",
+            "place": "dental",
+            "voiced": false
+        },
+        {
+            "symbol": "d̪͡ð",
+            "manner": "non-sibilant affricate",
+            "place": "dental",
+            "voiced": true
+        },
+        {
+            "symbol": "t͡ɹ̝̊",
+            "manner": "non-sibilant affricate",
+            "place": "alveolar",
+            "voiced": false
+        },
+        {
+            "symbol": "d͡ɹ̝",
+            "manner": "non-sibilant affricate",
+            "place": "alveolar",
+            "voiced": true
+        },
+        {
+            "symbol": "t̠͡ɹ̠̊˔",
+            "manner": "non-sibilant affricate",
+            "place": "postalveolar",
+            "voiced": false
+        },
+        {
+            "symbol": "d̠͡ɹ̠˔",
+            "manner": "non-sibilant affricate",
+            "place": "postalveolar",
+            "voiced": true
+        },
+        {
+            "symbol": "c͡ç",
+            "manner": "non-sibilant affricate",
+            "place": "palatal",
+            "voiced": false
+        },
+        {
+            "symbol": "ɟ͡ʝ",
+            "manner": "non-sibilant affricate",
+            "place": "palatal",
+            "voiced": true
+        },
+        {
+            "symbol": "k͡x",
+            "manner": "non-sibilant affricate",
+            "place": "velar",
+            "voiced": false
+        },
+        {
+            "symbol": "ɡ͡ɣ",
+            "manner": "non-sibilant affricate",
+            "place": "velar",
+            "voiced": true
+        },
+        {
+            "symbol": "q͡χ",
+            "manner": "non-sibilant affricate",
+            "place": "uvular",
+            "voiced": false
+        },
+        {
+            "symbol": "ɢ͡ʁ",
+            "manner": "non-sibilant affricate",
+            "place": "uvular",
+            "voiced": true
+        },
+        {
+            "symbol": "ʡ͡ʜ",
+            "manner": "non-sibilant affricate",
+            "place": "pharyngeal",
+            "voiced": false
+        },
+        {
+            "symbol": "ʡ͡ʢ",
+            "manner": "non-sibilant affricate",
+            "place": "pharyngeal",
+            "voiced": true
+        },
+        {
+            "symbol": "ʔ͡h",
+            "manner": "non-sibilant affricate",
             "place": "glottal",
             "voiced": false
         }
@@ -412,6 +590,11 @@
             "symbol": "ɰ",
             "place": "velar",
             "voiced": true
+        },
+        {
+            "symbol": "˷",
+            "place": "glottal",
+            "voiced": true
         }
     ],
     "taps_and_flaps": [
@@ -452,7 +635,7 @@
         },
         {
             "symbol": "ʡ̮",
-            "place": "epiglottal",
+            "place": "pharyngeal",
             "voiced": true
         }
     ],
@@ -483,6 +666,16 @@
             "voiced": true
         },
         {
+            "symbol": "ɽ̊r̥",
+            "place": "retroflex",
+            "voiced": false
+        },
+        {
+            "symbol": "ɽr",
+            "place": "retroflex",
+            "voiced": true
+        },
+        {
             "symbol": "ʀ̥",
             "place": "uvular",
             "voiced": false
@@ -494,12 +687,118 @@
         },
         {
             "symbol": "ʜ",
-            "place": "epiglottal",
+            "place": "pharyngeal",
             "voiced": false
         },
         {
             "symbol": "ʢ",
-            "place": "epiglottal",
+            "place": "pharyngeal",
+            "voiced": true
+        }
+    ],
+    "lateral_affricates": [
+        {
+            "symbol": "t͡ɬ",
+            "manner": "lateral affricate",
+            "place": "alveolar",
+            "voiced": false
+        },
+        {
+            "symbol": "d͡ɮ",
+            "manner": "lateral affricate",
+            "place": "alveolar",
+            "voiced": true
+        },
+        {
+            "symbol": "t͡ꞎ",
+            "manner": "lateral affricate",
+            "place": "retroflex",
+            "voiced": false
+        },
+        {
+            "symbol": "d͡ɭ˔",
+            "manner": "lateral affricate",
+            "place": "retroflex",
+            "voiced": true
+        },
+        {
+            "symbol": "c͡ʎ̥˔",
+            "manner": "lateral affricate",
+            "place": "palatal",
+            "voiced": false
+        },
+        {
+            "symbol": "ɟ͡ʎ̝",
+            "manner": "lateral affricate",
+            "place": "palatal",
+            "voiced": true
+        },
+        {
+            "symbol": "k͡𝼄",
+            "manner": "lateral affricate",
+            "place": "velar",
+            "voiced": false
+        },
+        {
+            "symbol": "ɡ͡ʟ̝",
+            "manner": "lateral affricate",
+            "place": "velar",
+            "voiced": true
+        }
+    ],
+    "lateral_fricatives": [
+        {
+            "symbol": "ɬ̪",
+            "manner": "lateral fricative",
+            "place": "dental",
+            "voiced": false
+        },
+        {
+            "symbol": "ɬ",
+            "manner": "lateral fricative",
+            "place": "alveolar",
+            "voiced": false
+        },
+        {
+            "symbol": "ɮ",
+            "manner": "lateral fricative",
+            "place": "alveolar",
+            "voiced": true
+        },
+        {
+            "symbol": "ꞎ",
+            "manner": "lateral fricative",
+            "place": "retroflex",
+            "voiced": false
+        },
+        {
+            "symbol": "ɭ˔",
+            "manner": "lateral fricative",
+            "place": "retroflex",
+            "voiced": true
+        },
+        {
+            "symbol": "ʎ̥˔",
+            "manner": "lateral fricative",
+            "place": "palatal",
+            "voiced": false
+        },
+        {
+            "symbol": "ʎ̝",
+            "manner": "lateral fricative",
+            "place": "palatal",
+            "voiced": true
+        },
+        {
+            "symbol": "𝼄",
+            "manner": "lateral fricative",
+            "place": "velar",
+            "voiced": false
+        },
+        {
+            "symbol": "ʟ̝",
+            "manner": "lateral fricative",
+            "place": "velar",
             "voiced": true
         }
     ],
@@ -588,290 +887,6 @@
         },
         {
             "symbol": "ʟ̆",
-            "place": "velar",
-            "voiced": true
-        }
-    ],
-    "sibilant_affricates": [
-        {
-            "symbol": "t͡s̪",
-            "manner": "sibilant affricate",
-            "place": "dental",
-            "voiced": false
-        },
-        {
-            "symbol": "d͡z̪",
-            "manner": "sibilant affricate",
-            "place": "dental",
-            "voiced": true
-        },
-        {
-            "symbol": "t͡s",
-            "manner": "sibilant affricate",
-            "place": "alveolar",
-            "voiced": false
-        },
-        {
-            "symbol": "d͡z",
-            "manner": "sibilant affricate",
-            "place": "alveolar",
-            "voiced": true
-        },
-        {
-            "symbol": "t̠͡ʃ",
-            "manner": "sibilant affricate",
-            "place": "postalveolar",
-            "voiced": false
-        },
-        {
-            "symbol": "d̠͡ʒ",
-            "manner": "sibilant affricate",
-            "place": "postalveolar",
-            "voiced": true
-        },
-        {
-            "symbol": "t͡ʂ",
-            "manner": "sibilant affricate",
-            "place": "retroflex",
-            "voiced": false
-        },
-        {
-            "symbol": "d͡ʐ",
-            "manner": "sibilant affricate",
-            "place": "retroflex",
-            "voiced": true
-        },
-        {
-            "symbol": "t͡ɕ",
-            "manner": "sibilant affricate",
-            "place": "palatal",
-            "voiced": false
-        },
-        {
-            "symbol": "d͡ʑ",
-            "manner": "sibilant affricate",
-            "place": "palatal",
-            "voiced": true
-        }
-    ],
-    "non_sibilant_affricates": [
-        {
-            "symbol": "p͡ɸ",
-            "manner": "non-sibilant affricate",
-            "place": "bilabial",
-            "voiced": false
-        },
-        {
-            "symbol": "b͡β",
-            "manner": "non-sibilant affricate",
-            "place": "bilabial",
-            "voiced": true
-        },
-        {
-            "symbol": "p̪͡f",
-            "manner": "non-sibilant affricate",
-            "place": "labiodental",
-            "voiced": false
-        },
-        {
-            "symbol": "b̪͡v",
-            "manner": "non-sibilant affricate",
-            "place": "labiodental",
-            "voiced": true
-        },
-        {
-            "symbol": "t̪͡θ",
-            "manner": "non-sibilant affricate",
-            "place": "dental",
-            "voiced": false
-        },
-        {
-            "symbol": "d̪͡ð",
-            "manner": "non-sibilant affricate",
-            "place": "dental",
-            "voiced": true
-        },
-        {
-            "symbol": "t͡ɹ̝̊",
-            "manner": "non-sibilant affricate",
-            "place": "alveolar",
-            "voiced": false
-        },
-        {
-            "symbol": "d͡ɹ̝",
-            "manner": "non-sibilant affricate",
-            "place": "alveolar",
-            "voiced": true
-        },
-        {
-            "symbol": "t̠͡ɹ̠̊˔",
-            "manner": "non-sibilant affricate",
-            "place": "postalveolar",
-            "voiced": false
-        },
-        {
-            "symbol": "d̠͡ɹ̠˔",
-            "manner": "non-sibilant affricate",
-            "place": "postalveolar",
-            "voiced": true
-        },
-        {
-            "symbol": "c͡ç",
-            "manner": "non-sibilant affricate",
-            "place": "palatal",
-            "voiced": false
-        },
-        {
-            "symbol": "ɟ͡ʝ",
-            "manner": "non-sibilant affricate",
-            "place": "palatal",
-            "voiced": true
-        },
-        {
-            "symbol": "k͡x",
-            "manner": "non-sibilant affricate",
-            "place": "velar",
-            "voiced": false
-        },
-        {
-            "symbol": "ɡ͡ɣ",
-            "manner": "non-sibilant affricate",
-            "place": "velar",
-            "voiced": true
-        },
-        {
-            "symbol": "q͡χ",
-            "manner": "non-sibilant affricate",
-            "place": "uvular",
-            "voiced": false
-        },
-        {
-            "symbol": "ɢ͡ʁ",
-            "manner": "non-sibilant affricate",
-            "place": "uvular",
-            "voiced": true
-        },
-        {
-            "symbol": "ʡ͡ʜ",
-            "manner": "non-sibilant affricate",
-            "place": "pharyngeal",
-            "voiced": false
-        },
-        {
-            "symbol": "ʡ͡ʢ",
-            "manner": "non-sibilant affricate",
-            "place": "pharyngeal",
-            "voiced": true
-        },
-        {
-            "symbol": "ʔ͡h",
-            "manner": "non-sibilant affricate",
-            "place": "glottal",
-            "voiced": false
-        }
-    ],
-    "lateral_affricates": [
-        {
-            "symbol": "t͡ɬ",
-            "manner": "lateral affricate",
-            "place": "alveolar",
-            "voiced": false
-        },
-        {
-            "symbol": "d͡ɮ",
-            "manner": "lateral affricate",
-            "place": "alveolar",
-            "voiced": true
-        },
-        {
-            "symbol": "t͡ꞎ",
-            "manner": "lateral affricate",
-            "place": "retroflex",
-            "voiced": false
-        },
-        {
-            "symbol": "d͡𝼅",
-            "manner": "lateral affricate",
-            "place": "retroflex",
-            "voiced": true
-        },
-        {
-            "symbol": "c͡𝼆",
-            "manner": "lateral affricate",
-            "place": "palatal",
-            "voiced": false
-        },
-        {
-            "symbol": "ɟ͡ʎ̝",
-            "manner": "lateral affricate",
-            "place": "palatal",
-            "voiced": true
-        },
-        {
-            "symbol": "k͡𝼄",
-            "manner": "lateral affricate",
-            "place": "velar",
-            "voiced": false
-        },
-        {
-            "symbol": "ɡ͡ʟ̝",
-            "manner": "lateral affricate",
-            "place": "velar",
-            "voiced": true
-        }
-    ],
-    "lateral_fricatives": [
-        {
-            "symbol": "ɬ̪",
-            "manner": "lateral fricative",
-            "place": "dental",
-            "voiced": false
-        },
-        {
-            "symbol": "ɬ",
-            "manner": "lateral fricative",
-            "place": "alveolar",
-            "voiced": false
-        },
-        {
-            "symbol": "ɮ",
-            "manner": "lateral fricative",
-            "place": "alveolar",
-            "voiced": true
-        },
-        {
-            "symbol": "ꞎ",
-            "manner": "lateral fricative",
-            "place": "retroflex",
-            "voiced": false
-        },
-        {
-            "symbol": "ɭ˔",
-            "manner": "lateral fricative",
-            "place": "retroflex",
-            "voiced": true
-        },
-        {
-            "symbol": "ʎ̥˔",
-            "manner": "lateral fricative",
-            "place": "palatal",
-            "voiced": false
-        },
-        {
-            "symbol": "ʎ̝",
-            "manner": "lateral fricative",
-            "place": "palatal",
-            "voiced": true
-        },
-        {
-            "symbol": "𝼄",
-            "manner": "lateral fricative",
-            "place": "velar",
-            "voiced": false
-        },
-        {
-            "symbol": "ʟ̝",
-            "manner": "lateral fricative",
             "place": "velar",
             "voiced": true
         }
@@ -982,11 +997,6 @@
             "place": "uvular"
         },
         {
-            "symbol": "p̪fʼ",
-            "manner": "ejective affricate",
-            "place": "labiodental"
-        },
-        {
             "symbol": "t̪θʼ",
             "manner": "ejective affricate",
             "place": "dental"
@@ -1007,11 +1017,6 @@
             "place": "retroflex"
         },
         {
-            "symbol": "tɕʼ",
-            "manner": "ejective affricate",
-            "place": "palatal"
-        },
-        {
             "symbol": "kxʼ",
             "manner": "ejective affricate",
             "place": "velar"
@@ -1027,7 +1032,7 @@
             "place": "alveolar"
         },
         {
-            "symbol": "c𝼆ʼ",
+            "symbol": "cʎ̥˔ʼ",
             "manner": "ejective lateral affricate",
             "place": "palatal"
         },
@@ -1035,11 +1040,6 @@
             "symbol": "k𝼄ʼ",
             "manner": "ejective lateral affricate",
             "place": "velar"
-        },
-        {
-            "symbol": "q𝼄ʼ",
-            "manner": "ejective lateral affricate",
-            "place": "uvular"
         },
         {
             "symbol": "ɸʼ",
@@ -1314,7 +1314,7 @@
         {
             "symbol": "n͡m",
             "manner": "nasal",
-            "place": "labial–alveolar",
+            "place": "labial-alveolar",
             "voiced": true
         },
         {
@@ -1362,19 +1362,19 @@
         {
             "symbol": "ɡ͡b",
             "manner": "plosive",
-            "place": "labial–velar",
+            "place": "labial-velar",
             "voiced": true
         },
         {
             "symbol": "q͡ʡ",
             "manner": "plosive",
-            "place": "uvular–epiglottal",
+            "place": "uvular-pharyngeal",
             "voiced": false
         },
         {
             "symbol": "q͡p",
             "manner": "plosive",
-            "place": "labial–uvular",
+            "place": "labial-uvular",
             "voiced": false
         },
         {
