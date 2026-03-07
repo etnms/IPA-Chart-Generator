@@ -51,14 +51,8 @@ function App() {
             </li>
             <li className="coded">
               Once you're done you can press the <code className="btn-example bb">Create charts</code> button. And,
-              voila! You can access the IPA charts you just created. You can also download them as a pdf or print them.
-              
-              
+              voila! You can access the IPA charts you just created. You can also download them as a pdf or print them.       
             </li>
-          
-              Note: for symbols with diacritic like affricates, you are better off using the buttons rather than typing or copy/pasting.
-              The app will likely treat them as separate symbols.
-          
           </ol>
         ) : null}
       </section>

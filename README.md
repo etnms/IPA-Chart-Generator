@@ -14,10 +14,6 @@ IPA Chart Generator is a very simple app made with React.
 2. If you want to access IPA symbols you can click on the "Show IPA" buttons.
 3. Once you're done you can press the "Create charts" button. And, voila! You can access the IPA charts you just created. You can also download them as a pdf or print them.
 
-
-### NOTES 
-- You can input or copy/paste some symbols, but for symbols that are a mixed of unicode characters (like affricates, such as /t͡s/) the app will likely not render them properly. To use these symbols, use the buttons in the app. I'm still looking into a way to improve this aspect of the app.
-
 ### About
 - Made with React
 - SCSS was used for easier access to color themes
