@@ -3,6 +3,34 @@ import "./LetterPicker.scss";
 import vowels from "../Data/vowels.json";
 import consonantData from "../Data/consonants.json"; // Renamed for clarity
 
+// All known consonant symbols sorted longest-first for greedy matching
+const allConsonantSymbolsSorted = Object.values(consonantData)
+  .flat()
+  .map((item) => item.symbol)
+  .sort((a, b) => b.length - a.length);
+
+// Parse raw text into known IPA consonant symbols using greedy longest-match.
+// This handles multi-codepoint symbols like t͡s correctly when typed or pasted.
+const parseConsonantInput = (text) => {
+  const result = [];
+  let i = 0;
+  while (i < text.length) {
+    let matched = false;
+    for (const sym of allConsonantSymbolsSorted) {
+      if (text.startsWith(sym, i)) {
+        if (!result.includes(sym)) result.push(sym);
+        i += sym.length;
+        matched = true;
+        break;
+      }
+    }
+    if (!matched) {
+      i++; // skip characters that aren't part of a known symbol
+    }
+  }
+  return result;
+};
+
 const LetterPicker = ({
   consonantList,
   setConsonants,
@@ -23,12 +51,15 @@ const LetterPicker = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleChange = (e, setListSound) => {
-    // Note: Manual typing of complex IPA symbols is difficult; 
-    let val = e.target.value;
-    
-    let tmpList = Array.from(new Set(val.split(''))); 
-    // Note: If users type, diacritics won't be handle properly
+  const handleChange = (e, setListSound, isConsonant = false) => {
+    const val = e.target.value;
+    let tmpList;
+    if (isConsonant) {
+      tmpList = parseConsonantInput(val);
+    } else {
+      // Use spread to iterate by Unicode code point, not code unit
+      tmpList = [...new Set([...val])];
+    }
     setListSound(tmpList);
   };
 
@@ -85,7 +116,7 @@ const LetterPicker = ({
           type="text"
           name="consonants-input"
           id="consonants-input"
-          onChange={(e) => handleChange(e, setConsonants)}
+          onChange={(e) => handleChange(e, setConsonants, true)}
         ></input>
         <button
           className="btn btn-secondary btn-ipa"
