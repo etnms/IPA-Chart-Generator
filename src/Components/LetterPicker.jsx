@@ -130,7 +130,6 @@ const LetterPicker = ({
         <div className="wrapper-ipa">{createBtns("consonant")}</div>
       ) : null}
 
-      {/* Vowel section remains unchanged per your request */}
       <fieldset>
         <label htmlFor="vowels-input" className="label-letters">
           Vowels
